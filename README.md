@@ -58,32 +58,46 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 npm run lint
 ```
 
-# prettier
+## 安装 Eslint 插件
 
-// 一行的字符数，如果超过会进行换行，默认为 80
+vscode 安装 Eslint 插件，在 .vscode/settings.json 中配置：
 
-printWidth: 160,
+```bash
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": false,
+        // 保存代码时，自动执行lint命令来修复代码的错误
+        "source.fixAll.eslint": true
+    }
+}
+```
 
-一个 tab 代表几个空格数
+## 安装 Prettier - Code formatter 插件
 
-tabWidth: 2,
+vscode 安装 Prettier - Code formatter 插件，在 .vscode/settings.json 中配置：
 
-// 是否使用 tab 进行缩进，默认为 false，表示用空格进行缩进
+```bash
+{
+    // 保存的时候自动格式化
+    "editor.formatOnSave": true,
+    // 默认格式化工具选择prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
 
-useTabs: false,
+## Prettier 一些规则
 
-// 字符串是否使用单引号，默认为 false，使用双引号
-
-singleQuote: false,
-
-// 行位是否使用分号，默认为 true
-
-semi: false,
-
-// 是否使用尾逗号，有三个可选值"<none|es5|all>"
-
-trailingComma: "none",
-
-// 对象大括号直接是否有空格，默认为 true，效果：{ foo: bar }
-
+// 一行的字符数，如果超过会进行换行，默认为 80  
+printWidth: 160,  
+// 一个 tab 代表几个空格数  
+tabWidth: 2,  
+// 是否使用 tab 进行缩进，默认为 false，表示用空格进行缩进  
+useTabs: false,  
+// 字符串是否使用单引号，默认为 false，使用双引号  
+singleQuote: false,  
+// 行位是否使用分号，默认为 true  
+semi: false,  
+// 是否使用尾逗号，有三个可选值"<none|es5|all>"  
+trailingComma: "none",  
+// 对象大括号直接是否有空格，默认为 true，效果：{ foo: bar }  
 bracketSpacing: true
