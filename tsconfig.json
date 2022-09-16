@@ -1,14 +1,15 @@
 {
   "files": [],
+  // 一个对象数组，指定要引用的项目
   "references": [
     {
-      "path": "./tsconfig.config.json"
+      "path": "./tsconfig.config.json" // 仅在 node 环境运行的文件的ts配置
     },
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.app.json" // 在 web 环境运行的文件的ts配置
     },
     {
-      "path": "./tsconfig.vitest.json"
+      "path": "./tsconfig.vitest.json" // 为 vitest 提供的ts配置
     }
   ]
 }
