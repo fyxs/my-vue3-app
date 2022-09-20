@@ -1,6 +1,16 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router"
-import HelloWorld from "./components/HelloWorld.vue"
+import { RouterLink, RouterView } from 'vue-router'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import { message } from 'ant-design-vue'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import HelloWorld from './components/HelloWorld.vue'
+
+dayjs.locale('zh-cn')
+
+message.config({
+  maxCount: 3 // 最大显示数, 超过限制时，最早的消息会被自动关闭
+})
 </script>
 
 <template>
@@ -9,7 +19,7 @@ import HelloWorld from "./components/HelloWorld.vue"
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-
+      <a-button type="primary"> ant-design-vue </a-button>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -17,7 +27,9 @@ import HelloWorld from "./components/HelloWorld.vue"
     </div>
   </header>
 
-  <RouterView />
+  <a-config-provider :locale="zhCN" component-size="small">
+    <router-view />
+  </a-config-provider>
 </template>
 
 <style scoped>

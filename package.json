@@ -18,6 +18,8 @@
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\""
   },
   "dependencies": {
+    "ant-design-vue": "^3.2.12",
+    "dayjs": "^1.11.5",
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
@@ -41,6 +43,7 @@
     "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.7.4",
+    "unplugin-vue-components": "^0.22.7",
     "vite": "^3.0.9",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vitest": "^0.23.0",

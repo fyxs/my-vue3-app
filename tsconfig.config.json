@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.node.json",
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"],
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "./components.d.ts"],
   "compilerOptions": {
     "composite": true, // 强制执行某些约束，使构建工具（包括 TypeScript 本身，处于--build模式下）能够快速确定项目是否已经构建。对于引用项目必须设置该属性。
     "types": ["node"], // 要包含的类型声明文件名列表。查看 @types，--typeRoots和--types章节了解详细信息。

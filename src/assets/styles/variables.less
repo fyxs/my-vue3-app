@@ -1,1 +1,4 @@
-@color1: yellow;
+// 使用css原生定义变量的方式，可以不用less @xxx 了
+:root { // 表示 <html> 根元素，除了优先级更高，与 html 选择器相同
+  --ant-normal-color: yellow; // '--' 该符号定义 css 变量， 通过 var() 方法使用。在 :root 中定义的是全局变量，否则有类似块级作用域限制
+}
