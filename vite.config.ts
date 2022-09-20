@@ -20,7 +20,11 @@ export default defineConfig(({ command, mode }) => {
       vue(),
       VueSetupExtend(),
       Components({
-        resolvers: [AntDesignVueResolver()]
+        resolvers: [
+          AntDesignVueResolver({
+            resolveIcons: true // 自动引入 ant-design/icons-vue 中的图标，需要安装@ant-design/icons-vue
+          })
+        ]
       })
     ],
     resolve: {

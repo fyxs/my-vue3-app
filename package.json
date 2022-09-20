@@ -18,6 +18,7 @@
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\""
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "ant-design-vue": "^3.2.12",
     "dayjs": "^1.11.5",
     "pinia": "^2.0.21",
