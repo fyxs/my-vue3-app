@@ -12,13 +12,25 @@ export default defineConfig(({ command, mode }) => {
     envDir: "./vite-environment",
     base: "./",
     define: {
-      "process.env": loadEnv(mode, process.cwd())
+      "process.env": envData
     },
     plugins: [vue(), VueSetupExtend()],
     resolve: {
       // 路径别名
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url))
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true, // 允许js中加载less
+          // 供全局使用：无需在style中引入以下less，直接使用less变量等
+          additionalData: `
+            @import "@/assets/styles/variables.less";
+            @import "@/assets/styles/mixins.less";
+          `
+        }
       }
     }
   }
