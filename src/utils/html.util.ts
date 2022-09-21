@@ -45,7 +45,7 @@ export const jsonp = (url: string, data: string | { [key: string]: string | numb
   const headEle = document.getElementsByTagName('head')[0]
   const ret = getUrlParams(data)
   JSONP.src = `${url}?callback=${callback}${ret}`
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     // 预先在括号的前面加个 ; ，可以避免 (window as any) 被误认为某个 xxx 的参数，假如 (window as any) 前面加了个 xxx 的话。此处其实没必要加的，当学习学习了
     ;(window as any)[callback] = (r: any) => {
       resolve(r)

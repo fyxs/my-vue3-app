@@ -1,3 +1,4 @@
+export * from './http.util'
 export * from './date.util'
 export * from './html.util'
 export * from './lodash.util'

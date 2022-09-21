@@ -35,13 +35,13 @@ export function _isNil(value: any) {
  */
 export function _pickObjectNoEmpty<T = { [key: string]: any }>(obj: { [key: string]: any } | { [key: string]: any }[]) {
   if (Array.isArray(obj)) {
-    return obj.map((ob) =>
-      pickBy(ob, (value) => {
+    return obj.map(ob =>
+      pickBy(ob, value => {
         return value || value === 0
       })
     ) as T[]
   }
-  return pickBy(obj, (value) => {
+  return pickBy(obj, value => {
     return value || value === 0
   }) as T
 }
@@ -56,7 +56,7 @@ export function _pickObjectTransform(
   objFun: { [key: string]: (value: any, obj?: { [key: string]: any }) => any }
 ) {
   if (Array.isArray(obj)) {
-    obj.map((ob) =>
+    obj.map(ob =>
       forOwn(ob, (value, key, object) => {
         if (objFun[key] && object) {
           object[key] = objFun[key](value, object)

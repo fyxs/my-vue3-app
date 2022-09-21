@@ -44,6 +44,9 @@ export default defineConfig(({ command, mode }) => {
           `
         }
       }
+    },
+    build: {
+      chunkSizeWarningLimit: 800 // 规定触发警告的 chunk 大小，默认 500。（以 kbs 为单位）
     }
   }
 })
