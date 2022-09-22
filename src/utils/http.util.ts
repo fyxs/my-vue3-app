@@ -4,23 +4,10 @@ import { message } from 'ant-design-vue'
 import { Modal } from 'ant-design-vue'
 
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import type { keyObject } from '@/services'
-
-/** 返回的 Response 结构 */
-export interface ResponseModel<T> {
-  status: 200 | 401 | 403
-  result: T
-  description: null | string
-}
-
-/** 获取的如 Table 数据基本结构 */
-export interface GetListAxios<T> {
-  list: T[]
-  totalCount: number
-}
+import type { KeyObject, ResponseModel } from '@/services'
 
 // 根据环境获取API baseURL
-const baseURL = process.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL
 
 // 创建axios实例
 const request = axios.create({
@@ -82,7 +69,7 @@ request.interceptors.response.use(
  * @param data 请求参数，类型为T泛型
  * @returns 返回类型为D泛型
  */
-export async function AxiosPost<T, D = any, R = keyObject>(url: string, data?: T): Promise<AxiosResponse<ResponseModel<D> & R>> {
+export async function AxiosPost<T, D = any, R = KeyObject>(url: string, data?: T): Promise<AxiosResponse<ResponseModel<D> & R>> {
   return request.post(url, data)
 }
 
@@ -92,6 +79,6 @@ export async function AxiosPost<T, D = any, R = keyObject>(url: string, data?: T
  * @param data 请求参数，类型为T泛型
  * @returns 返回类型为D泛型
  */
-export async function AxiosGet<T, D = any, R = keyObject>(url: string, data?: T): Promise<AxiosResponse<ResponseModel<D> & R>> {
+export async function AxiosGet<T, D = any, R = KeyObject>(url: string, data?: T): Promise<AxiosResponse<ResponseModel<D> & R>> {
   return request.get(url, { params: data })
 }

@@ -5,6 +5,9 @@ import AppView from './App.vue'
 import router from './router'
 
 import './assets/styles/main.less'
+import { iLog } from './utils'
+
+iLog('import.meta\u200b.env', import.meta.env, 'process\u200b.env', process.env) // 字符串中还不能直接含有 import.meta.env、process.env，否则编译直接GG
 
 function render() {
   const app = createApp(AppView)
