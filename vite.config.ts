@@ -16,6 +16,23 @@ export default defineConfig(({ command, mode }) => {
     define: {
       'process.env': envData
     },
+    server: {
+      host: 'localhost', // 默认 localhost，与127.0.0.1映射，代表本地，因此两者之间可以互相访问。host 文件配置域名解析，可通过域名访问
+      port: 8080,
+      https: false, // 启用 TLS + HTTP/2。注意：当 server.proxy 选项 也被使用时，将会仅使用 TLS
+      open: false, //vite项目启动时自动打开浏览器
+      // 指定服务器响应的 header
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+      proxy: {
+        '/api': {
+          target: envData.VITE_API_URL, // api服务器地址
+          changeOrigin: true, // 将主机头的来源更改为目标 URL。能够跨域
+          secure: false // 是否想要验证 SSL证书
+        }
+      }
+    },
     plugins: [
       vue(),
       VueSetupExtend(),

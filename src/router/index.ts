@@ -6,7 +6,7 @@ import { appRoutes } from './app.router'
 const routes: Array<RouteRecordRaw> = [
   ...appRoutes,
   {
-    path: '/:id+', // + 匹配1 个或多个部分路由
+    path: '/:id*', // + 匹配1 个或多个部分路由
     name: 'notFound',
     component: NotFound
   }
