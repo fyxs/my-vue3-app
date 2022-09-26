@@ -1,7 +1,5 @@
 import axios from 'axios'
-
 import { message } from 'ant-design-vue'
-import { Modal } from 'ant-design-vue'
 
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import type { KeyObject, ResponseModel } from '@/services'
@@ -16,7 +14,7 @@ const request = axios.create({
   headers: {
     'content-type': 'application/json'
   },
-  timeout: 15000
+  timeout: 10000
 })
 
 // request 拦截器
@@ -48,15 +46,7 @@ request.interceptors.response.use(
   error => {
     // 失败响应
     if (error.response?.data.status !== 200) {
-      if (error.request.responseURL.includes('api/user-subscribe/create')) {
-        // console.log(error.response?.data.message);
-        Modal.error({
-          content: error.response?.data.message || '请求失败，请稍后再试',
-          okText: '确认'
-        })
-      } else {
-        message.error(error.response?.data.message || '请求失败，请稍后再试')
-      }
+      message.error(error.response?.data.message || '请求失败，请稍后再试')
     }
 
     return true
