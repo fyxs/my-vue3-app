@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import AppView from './App.vue'
 import router from './router'
+import eChartFns from '@/components/charts/index'
 
 import './assets/styles/main.less'
 import { iLog } from './utils'
@@ -11,6 +12,8 @@ iLog('import.meta\u200b.env', import.meta.env, 'process\u200b.env', process.env)
 
 function render() {
   const app = createApp(AppView)
+
+  app.config.globalProperties.$eChartFns = eChartFns
 
   app.use(createPinia())
   app.use(router)
