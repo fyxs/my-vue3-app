@@ -1,3 +1,7 @@
+/**
+ * @description 基于dayjs日期库
+ */
+
 import dayjs, { Dayjs } from 'dayjs'
 
 export enum DateFormatModel {
