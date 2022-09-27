@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 
 import AppView from './App.vue'
 import router from './router'
-import eChartFns from '@/components/charts/index'
+import eChartFns from '@/components/chartView/index'
 
 import './assets/styles/main.less'
 import { iLog } from './utils'

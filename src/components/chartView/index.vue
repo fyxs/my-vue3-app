@@ -1,15 +1,29 @@
-<script setup lang="ts" name="EChartsView">
+<script setup lang="ts">
+/**
+ * @description 此处封装了echarts，只需在options 目录下相应的图表类型文件配置相应 option，
+ * 使用该组件时 获取并传递配置好的 option 即可，具体可参考当前工程案例
+ */
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { echarts } from '@/utils'
+import type { ECOption } from '@/utils'
 
-import type { Props } from './charts-type.service'
+type RendererType = 'canvas' | 'svg'
+type Props = {
+  width: string
+  height: string
+  autoResize: boolean
+  chartOption: ECOption
+  type: RendererType
+}
 
+// defineProps 的泛型参数不能从外部文件引入，只能是类型字面量，或同文件中定义的类型的引用。（竟然不支持外部文件引用的类型！！！）
 const props = withDefaults(defineProps<Props>(), {
   width: '100%',
-  height: '350px',
+  height: '100%',
   autoResize: true,
   type: 'canvas'
 })
+
 let chartInstance: any
 // chart 模板引用
 const chartRef = ref(null)
@@ -89,7 +103,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="chart-container">
+  <div id="shared-echart-sfc">
     <div ref="chartRef" :style="{ height: height, width: width }" />
   </div>
 </template>

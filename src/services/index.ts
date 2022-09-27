@@ -1,3 +1,3 @@
-export * from './common-api.service'
-export * from './common-enum.service'
-export * from './common-type.service'
+export * from './common.api'
+export * from './common.enum'
+export * from './common.type'

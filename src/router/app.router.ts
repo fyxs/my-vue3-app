@@ -8,6 +8,11 @@ const childRoutes: Array<RouteRecordRaw> = [
     meta: { name: '首页' }
   },
   {
+    path: 'testChart',
+    name: 'testChart',
+    component: () => import('../views/testChart/index.vue')
+  },
+  {
     path: 'about',
     name: 'about',
     component: () => import('../views/AboutView.vue')
