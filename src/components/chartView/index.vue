@@ -8,6 +8,7 @@ import { echarts } from '@/utils'
 import type { ECOption } from '@/utils'
 
 type RendererType = 'canvas' | 'svg'
+// 此处用 interface 定义Props类型并在 defineProps 中传递会报错（error: 模块的默认导出具有或正在使用专用名称“Props”），暂不清楚具体什么原因
 type Props = {
   width: string
   height: string
