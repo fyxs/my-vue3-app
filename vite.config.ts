@@ -14,11 +14,12 @@ import { createStyleImportPlugin, AndDesignVueResolve } from 'vite-plugin-style-
 export default defineConfig(({ command, mode }) => {
   const envData = loadEnv(mode, './vite-environment')
   console.log('获取到环境变量：', command, mode, envData)
+
   return {
     envDir: './vite-environment',
     base: './',
     define: {
-      'process.env': envData
+      'process.env': envData // 追加到 process.env 可不用，import.meta.env 代替之
     },
     server: {
       host: 'localhost', // 默认 localhost，与127.0.0.1映射，代表本地，因此两者之间可以互相访问。host 文件配置域名解析，可通过域名访问
