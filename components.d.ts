@@ -7,10 +7,12 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AboutView: typeof import('./src/views/AboutView.vue')['default']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ChartView: typeof import('./src/components/chartView/index.vue')['default']
     Empty: typeof import('./src/components/Empty.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HomeView: typeof import('./src/views/HomeView.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
@@ -20,8 +22,10 @@ declare module '@vue/runtime-core' {
     LayoutMain: typeof import('./src/components/layout/LayoutMain.vue')['default']
     LayoutMainHeader: typeof import('./src/components/layout/LayoutMainHeader.vue')['default']
     LayoutMainMenu: typeof import('./src/components/layout/LayoutMainMenu.vue')['default']
+    NotFound: typeof import('./src/views/NotFound.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TestChart: typeof import('./src/views/testChart/index.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }

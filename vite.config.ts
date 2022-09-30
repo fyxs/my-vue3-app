@@ -3,8 +3,12 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend' // 允许使用 setup 语法时自定义组件 name
+// 自动引入某些Vue UI库组件
 import Components from 'unplugin-vue-components/vite'
+// 引入 ant-design-vue 解析器，配合 unplugin-vue-components 自动引入 ant-design-vue UI组件
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+// 使用 unplugin-vue-components 引入ui库的时候，message, notification 等引入样式不生效 安装 vite-plugin-style-import 解决
+import { createStyleImportPlugin, AndDesignVueResolve } from 'vite-plugin-style-import'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -37,10 +41,26 @@ export default defineConfig(({ command, mode }) => {
       vue(),
       VueSetupExtend(),
       Components({
+        dirs: ['src/components', 'src/views'], // 要搜索组件的目录的相对路径
+        extensions: ['vue'], // 组件的有效文件扩展名
+        deep: true, // 搜索子目录
         resolvers: [
           AntDesignVueResolver({
             resolveIcons: true // 自动引入 ant-design/icons-vue 中的图标，需要安装@ant-design/icons-vue
           })
+        ]
+      }),
+      createStyleImportPlugin({
+        resolves: [AndDesignVueResolve()],
+        // 自定义规则
+        libs: [
+          {
+            libraryName: 'ant-design-vue',
+            esModule: true,
+            resolveStyle: name => {
+              return `ant-design-vue/es/${name}/style/index` // 组件样式按需加载
+            }
+          }
         ]
       })
     ],
