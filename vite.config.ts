@@ -2,13 +2,16 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VueSetupExtend from 'vite-plugin-vue-setup-extend' // 允许使用 setup 语法时自定义组件 name
-// 自动引入某些Vue UI库组件
+// 允许使用 setup 语法时自定义组件 name
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+// 自动引入某些Vue UI库组件。对应生成的ts声明文件：components.d.ts
 import Components from 'unplugin-vue-components/vite'
 // 引入 ant-design-vue 解析器，配合 unplugin-vue-components 自动引入 ant-design-vue UI组件
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 // 使用 unplugin-vue-components 引入ui库的时候，message, notification 等引入样式不生效 安装 vite-plugin-style-import 解决
 import { createStyleImportPlugin, AndDesignVueResolve } from 'vite-plugin-style-import'
+// 自动引入 vue3 composition api、vue router api 等。对应生成的ts声明文件：auto-imports.d.ts
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -63,6 +66,21 @@ export default defineConfig(({ command, mode }) => {
             }
           }
         ]
+      }),
+      AutoImport({
+        include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue$/,
+          /\.vue\?vue/, // .vue
+          /\.md$/ // .md
+        ],
+        // imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
+        imports: ['vue', 'vue-router'],
+        // 解决eslint校验报错。默认关闭，打开后编译生成 .eslintrc-auto-import.json 文件供 .eslintrc.cjs 使用。
+        // 需要注意：一旦生成配置文件之后，最好把enable关掉，即改成false。否则这个文件每次会在重新加载的时候重新生成，这会导致eslint有时会找不到这个文件。当需要更新配置文件的时候，再重新打开吧。
+        eslintrc: {
+          enabled: false
+        }
       })
     ],
     resolve: {

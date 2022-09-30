@@ -3,7 +3,7 @@
  * @description 此处封装了echarts，只需在options 目录下相应的图表类型文件配置相应 option，
  * 使用该组件时 获取并传递配置好的 option 即可，具体可参考当前工程案例
  */
-import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
+// import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { echarts } from '@/utils'
 import type { ECOption } from '@/utils'
 
