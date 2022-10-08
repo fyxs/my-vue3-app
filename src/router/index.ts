@@ -10,4 +10,4 @@ const router = createRouter({
 })
 
 export default router
-export * from './router.api'
+export * from './router'

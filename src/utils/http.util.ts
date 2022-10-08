@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message } from 'ant-design-vue'
 
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import type { KeyObject, ResponseModel } from '@/services'
+import type { KeyObject, ResponseModel } from '@/types/axios'
 
 // 根据环境获取API baseURL
 const baseURL = import.meta.env.VITE_API_URL

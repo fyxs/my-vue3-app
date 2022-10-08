@@ -46,7 +46,7 @@ export default defineConfig(({ command, mode }) => {
       vue(),
       VueSetupExtend(),
       Components({
-        dirs: ['src/components', 'src/views'], // 要搜索组件的目录的相对路径
+        dirs: ['src/components', 'src/views', 'src/layouts'], // 要搜索组件的目录的相对路径
         extensions: ['vue'], // 组件的有效文件扩展名
         deep: true, // 搜索子目录
         resolvers: [
