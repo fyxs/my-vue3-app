@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import store from './stores'
+import { store, registerStore } from './store'
 
 import AppView from './App.vue'
 import router from './router'
@@ -16,6 +16,9 @@ function render() {
   app.config.globalProperties.$eChartFns = eChartFns
 
   app.use(store)
+  // 注册pinia状态管理库
+  registerStore()
+
   app.use(router)
 
   app.mount('#app')

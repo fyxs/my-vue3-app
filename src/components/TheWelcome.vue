@@ -5,9 +5,10 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import { useCounterStore } from '@/stores/modules/counter'
+import appStore from '@/store'
 
-const { count, increment } = useCounterStore()
+const { count } = storeToRefs(appStore.useCounterStore)
+const { increment } = appStore.useCounterStore
 </script>
 
 <template>
