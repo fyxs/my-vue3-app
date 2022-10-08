@@ -14,6 +14,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    'vue/multi-word-component-names': 'off' // 关闭VUE组件命名规则--必须复合单词命名组件的规则（吐）
+    'vue/multi-word-component-names': 'off' // VUE组件命名规则--true: 必须复合单词命名组件
   }
 }

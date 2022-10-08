@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutView: typeof import('./src/views/AboutView.vue')['default']
+    AButton: typeof import('ant-design-vue/es')['Button']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ChartView: typeof import('./src/components/chartView/index.vue')['default']
     Empty: typeof import('./src/components/Empty.vue')['default']

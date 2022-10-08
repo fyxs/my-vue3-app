@@ -5,6 +5,9 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import { useCounterStore } from '@/stores/modules/counter'
+
+const { count, increment } = useCounterStore()
 </script>
 
 <template>
@@ -75,4 +78,7 @@ import SupportIcon from './icons/IconSupport.vue'
     As an independent project, Vue relies on community backing for its sustainability. You can help us by
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
   </WelcomeItem>
+
+  <div>数量：{{ count }}</div>
+  <a-button @click="increment"> 点击增加数量 </a-button>
 </template>

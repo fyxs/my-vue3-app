@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import store from './stores'
 
 import AppView from './App.vue'
 import router from './router'
@@ -15,7 +15,7 @@ function render() {
 
   app.config.globalProperties.$eChartFns = eChartFns
 
-  app.use(createPinia())
+  app.use(store)
   app.use(router)
 
   app.mount('#app')

@@ -1,42 +1,46 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-const childRoutes: Array<RouteRecordRaw> = [
+const menuRoutes: Array<RouteRecordRaw> = [
   {
-    path: 'home',
+    path: '/home',
     name: 'home',
     component: () => import('@/views/HomeView.vue'),
     meta: { name: '首页' }
   },
   {
-    path: 'testChart',
+    path: '/testChart',
     name: 'testChart',
-    component: () => import('../views/testChart/index.vue')
+    component: () => import('@/views/testChart/index.vue'),
+    meta: { name: '图例' }
   },
   {
-    path: 'about',
+    path: '/about',
     name: 'about',
-    component: () => import('../views/AboutView.vue')
+    component: () => import('@/views/AboutView.vue'),
+    meta: { name: '图例' }
   }
 ]
 
-const appRoutes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'root',
-    redirect: '/home',
-    children: [...childRoutes]
-  }
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: () => import('')
-  // },
-  // {
-  //   path: '/index',
-  //   name: 'index',
-  //   component: () => import('@/components/layout/index.vue'),
-  //   children: [...childRoutes]
-  // }
-]
+// 根路由
+export const RootRoute: RouteRecordRaw = {
+  path: '/',
+  name: 'root',
+  redirect: '/home'
+}
+
+export const LoginRoute: RouteRecordRaw = {
+  path: '/login',
+  name: 'login',
+  component: () => import('@/views/NotFound.vue')
+}
+
+// 404
+export const NotFoundRoute: RouteRecordRaw = {
+  path: '/:id+', // * 匹配 0个或多个部分路由，+ 至少匹配一个
+  name: 'notFound',
+  component: () => import('@/views/NotFound.vue')
+}
+
+const appRoutes: Array<RouteRecordRaw> = [RootRoute, LoginRoute, ...menuRoutes, NotFoundRoute]
 
 export { appRoutes }

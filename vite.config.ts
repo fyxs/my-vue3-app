@@ -4,7 +4,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // 允许使用 setup 语法时自定义组件 name
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
-// 自动引入某些Vue UI库组件。对应生成的ts声明文件：components.d.ts
+// 自动引入自定义Vue组件 及 某些Vue UI库组件。对应生成的ts声明文件：components.d.ts
 import Components from 'unplugin-vue-components/vite'
 // 引入 ant-design-vue 解析器，配合 unplugin-vue-components 自动引入 ant-design-vue UI组件
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -15,14 +15,15 @@ import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const envData = loadEnv(mode, './vite-environment')
-  console.log('获取到环境变量：', command, mode, envData)
+  const viteEnv = loadEnv(mode, './vite-environment')
+  console.log('获取到环境变量：', command, mode, viteEnv)
+  const { VITE_PUBLIC_PATH } = viteEnv
 
   return {
     envDir: './vite-environment',
-    base: './',
+    base: VITE_PUBLIC_PATH,
     define: {
-      'process.env': envData // 追加到 process.env 可不用，import.meta.env 代替之
+      'process.env': viteEnv // 追加到 process.env 可不用，import.meta.env 代替之
     },
     server: {
       host: 'localhost', // 默认 localhost，与127.0.0.1映射，代表本地，因此两者之间可以互相访问。host 文件配置域名解析，可通过域名访问
@@ -35,7 +36,7 @@ export default defineConfig(({ command, mode }) => {
       },
       proxy: {
         '/api': {
-          target: envData.VITE_API_URL, // api服务器地址
+          target: viteEnv.VITE_API_URL, // api服务器地址
           changeOrigin: true, // 将主机头的来源更改为目标 URL。能够跨域
           secure: false // 是否想要验证 SSL证书
         }
@@ -74,8 +75,7 @@ export default defineConfig(({ command, mode }) => {
           /\.vue\?vue/, // .vue
           /\.md$/ // .md
         ],
-        // imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
-        imports: ['vue', 'vue-router'],
+        imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
         // 解决eslint校验报错。默认关闭，打开后编译生成 .eslintrc-auto-import.json 文件供 .eslintrc.cjs 使用。
         // 需要注意：一旦生成配置文件之后，最好把enable关掉，即改成false。否则这个文件每次会在重新加载的时候重新生成，这会导致eslint有时会找不到这个文件。当需要更新配置文件的时候，再重新打开吧。
         eslintrc: {
