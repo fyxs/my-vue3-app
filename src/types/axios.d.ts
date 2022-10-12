@@ -1,3 +1,7 @@
+/**
+ * axios相关类型声明
+ */
+
 // 定义类型集合用 interface 其它用 type
 export interface KeyObject {
   [key: string]: any
