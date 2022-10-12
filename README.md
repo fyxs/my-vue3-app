@@ -1,23 +1,24 @@
 # my-vue3-app
 
-基于vue3脚手架搭建，完善和扩充了相关生态插件及工具库等，规范了项目整体结构。建议使用 yarn 安装modules
+基于vue3脚手架搭建，完善和扩充了相关生态插件及工具库等，规范了项目整体结构。
 
 ## Project Setup
 
 ```sh
-npm install
+npm install 建议使用 yarn 安装modules
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+npm run start 启动项目
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+npm run dev， npm run test， npm run prod  
+本意是区分各个环境打包，但本脚手架打包配置并没有做区分，所以能力是一样的，有想法的可自行为每个环境做单独打包配置（嘿嘿嘿）
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
@@ -29,14 +30,20 @@ npm run test:unit
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
-npm run build
 npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-npm run lint
+npm run lint 代码ESLint检测修正
+
+```
+
+### Prettier with [Prettier](https://prettier.io/)
+
+```sh
+npm run format 代码格式化
 ```
 
 ## 安装 Eslint 插件
