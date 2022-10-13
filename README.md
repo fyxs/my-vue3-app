@@ -18,7 +18,7 @@ npm run start 启动项目
 
 ```sh
 npm run dev， npm run test， npm run prod  
-本意是区分各个环境打包，但本脚手架打包配置并没有做区分，所以能力是一样的，有想法的可自行为每个环境做单独打包配置（嘿嘿嘿）
+本意是区分各个环境打包，但本脚手架打包配置并没有做区分，所以能力是一样的
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
